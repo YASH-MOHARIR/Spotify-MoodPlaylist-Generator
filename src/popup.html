@@ -1,0 +1,48 @@
+<!-- src/popup.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spotify Gemini Moodify</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <div class="aurora-blob aurora-blob-1"></div>
+      <div class="aurora-blob aurora-blob-2"></div>
+      <div class="aurora-blob aurora-blob-3"></div>
+      
+      <div id="status">Not logged in</div>
+      <hr>
+      <button class="aurora-glow-button login-btn" id="login-btn">Login to Spotify</button>
+
+      <div class="playlist-section" id="playlist-section" style="display: none">
+
+        <div class="playlist-select">
+          <label
+            >Choose Playlist:
+            <select class="aurora-select" id="playlist-select"></select>
+          </label>
+        </div>
+
+        <div class="mood-select">
+          <label
+            >Choose Mood:
+            <select class="aurora-select" id="mood-select">
+              <option value="happy">Happy</option>
+              <option value="sad">Sad</option>
+              <option value="romantic">Romantic</option>
+              <option value="chill">Chill</option>
+              <option value="energetic">Energetic</option>
+            </select>
+          </label>
+        </div>
+
+        
+        <button class="aurora-glow-button generate-btn" id="generate-btn">Generate Mood Playlist</button>
+
+      </div>
+    </div>
+
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>

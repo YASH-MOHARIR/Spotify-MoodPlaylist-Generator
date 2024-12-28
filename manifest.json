@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Spotify Mood Extension (Gemini Edition)",
+  "version": "1.0.0",
+  "description": "Create mood-based playlists from your Spotify tracks using LLM-based mood inference.",
+  "permissions": [
+    "storage",
+    "identity",
+    "activeTab" 
+  ],
+  
+  "background": {
+    "service_worker": "src/background.js", 
+    "type": "module" 
+  },
+  "action": {
+    "default_popup": "src/popup.html"
+  },
+  "icons": {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/popup/*.html", "src/popup/*.js", "assets/*"], 
+      "matches": ["<all_urls>"] 
+    }
+  ]
+}

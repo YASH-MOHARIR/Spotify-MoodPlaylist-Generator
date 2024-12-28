@@ -1,0 +1,192 @@
+/* Modern Gradient Glassmorphism Aurora Button for White Background */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+body {
+  background-color: transparent;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.popup-container {
+  width: 300px;
+  margin: 10px;
+  height: 100%;
+  position: relative;
+  background: white;
+  border-radius: 10px; /* Makes the corners rounded */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+  padding: 20px;
+  text-align: start;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  .aurora-blob {
+    height: 400px;
+    width: 400px;
+    opacity: 0.6;
+    border-radius: 50%;
+    position: absolute;
+    z-index: -1;
+    filter: blur(100px);
+  }
+  .aurora-blob-1 {
+    background-color: #60efff;
+    animation: fly 30s linear infinite;
+  }
+  .aurora-blob-2 {
+    right: 0;
+    top: 0%;
+    background-color: #60d2ff;
+
+    animation: fly 25s linear infinite;
+  }
+  .aurora-blob-3 {
+    left: 40%;
+    top: 50%;
+    background-color: #60ffda;
+
+    animation: flyPlus 25s linear infinite;
+  }
+  a {
+    color: #00ad85;
+  }
+  hr {
+    border: none;
+    height: 2px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .login-btn {
+    width: 100%;
+  }
+  label {
+    margin-top: 10px;
+  }
+
+  .playlist-section {
+    .playlist-select,
+    .mood-select {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 10px;
+      select {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+/* Glowing Aurora Glassmorphism Button (Modern Gradient Theme) */
+.aurora-glow-button {
+  position: relative;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px 15px;
+  border: transparent;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  transition: all 0.4s ease-in-out;
+  backdrop-filter: blur(2px);
+}
+
+.aurora-glow-button::before {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 200%;
+  height: 300%;
+  background: hsla(167, 68%, 73%, 1);
+  background: linear-gradient(90deg, #60efff 0%, rgb(117, 255, 250) 50%, hsla(178, 59%, 48%, 1) 100%);
+
+  animation: aurora-pulse 4s linear re;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(40px);
+}
+
+.aurora-glow-button:hover::before {
+  opacity: 1;
+  filter: blur(80px);
+}
+
+.aurora-glow-button:hover {
+  transition: all 0.4s cubic-bezier(0.17, 0.67, 0.49, 1.24);
+  box-shadow: 0 0px 40px hsla(178, 59%, 48%, 0.4);
+}
+
+.aurora-glow-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.generate-btn {
+  width: 100%;
+  margin-top: 10px;
+}
+/* Styled Select Input */
+.aurora-select {
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  //   background: rgba(200, 220, 255, 0.3);
+  color: rgba(50, 50, 50, 0.9);
+  box-shadow: 0 4px 18px rgba(150, 170, 250, 0.2);
+  transition: all 0.3s ease-in-out;
+  appearance: none; /* Remove default arrow in certain browsers */
+}
+
+.aurora-select:hover {
+  background: #a4fbe780;
+  outline: none;
+  border: none;
+  //   box-shadow: 0 6px 24px rgba(120, 140, 255, 0.4);
+}
+
+@keyframes aurora-pulse {
+  0% {
+    transform: translateY(-100%) rotate(0deg);
+  }
+  50% {
+    transform: translateY(100%) rotate(180deg);
+  }
+  100% {
+    transform: translateY(-100%) rotate(360deg);
+  }
+}
+
+//make this animation infinite
+
+@keyframes fly {
+  0% {
+    transform: rotate(0deg) translate(0) scale(1);
+  }
+  50% {
+    transform: rotate(2turn) translate(200px) rotate(-2turn) scale(0.5);
+  }
+  100% {
+    transform: rotate(0deg) translate(0) scale(1);
+  }
+}
+
+@keyframes flyPlus {
+  0% {
+    transform: rotate(0deg) translate(0) scale(1);
+  }
+  50% {
+    transform: rotate(-2turn) translate(200px) rotate(2turn) scale(0.5);
+  }
+  100% {
+    transform: rotate(0deg) translate(0) scale(1);
+  }
+}
