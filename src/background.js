@@ -14,14 +14,14 @@ import { analyzeMoods } from './utils/geminiApi.js';
  * IMPORTANT: For production, do NOT expose your client secret in client-side code.
  * Use a secure server or your own backend if possible. This example is for demonstration only.
  */ 
-const clientId = "f7443586273348ebaffca7aba15e94b6";
-const clientSecret = "abb55d2434a244a3910c25824f0abfdb";
+const clientId = "";
+const clientSecret = "";
 /**
  * The redirect URI must be whitelisted in your Spotify Developer Dashboard.
  * Typically for a Chrome extension using launchWebAuthFlow, it looks like:
  * https://<your-extension-id>.chromiumapp.org/
 */
-const redirectUri = "https://paakbbkbmndpmabhjmfikaedcmmgdbcp.chromiumapp.org/"; 
+const redirectUri = ""; 
 
 
 const scopes = [
