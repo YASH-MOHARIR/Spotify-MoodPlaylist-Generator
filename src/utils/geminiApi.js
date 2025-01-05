@@ -1,7 +1,7 @@
 // geminiApi.js
 
 // API key for accessing the Gemini API (Replace with your actual API key)
-const API_KEY = "AIzaSyDvFv2gV1Wq-U1i7c4p6_yhFsjh8RjcqRk";
+const API_KEY = "";
 
 /**
  * Function to get a response from the Gemini API based on a given prompt
