@@ -113,8 +113,15 @@ body {
 }
 
 .aurora-glow-button:hover {
+  color: #00392c;
   transition: all 0.4s cubic-bezier(0.17, 0.67, 0.49, 1.24);
   box-shadow: 0 0px 40px hsla(178, 59%, 48%, 0.4);
+}
+
+.aurora-glow-button[disabled]:hover {
+  pointer-events: none;
+  opacity: 0;
+  display: none;
 }
 
 .aurora-glow-button span {

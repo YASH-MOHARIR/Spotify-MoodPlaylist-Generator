@@ -14,14 +14,14 @@ import { analyzeMoods } from './utils/geminiApi.js';
  * IMPORTANT: For production, do NOT expose your client secret in client-side code.
  * Use a secure server or your own backend if possible. This example is for demonstration only.
  */ 
-const clientId = "";
-const clientSecret = "";
+const clientId = "f7443586273348ebaffca7aba15e94b6";
+const clientSecret = "abb55d2434a244a3910c25824f0abfdb";
 /**
  * The redirect URI must be whitelisted in your Spotify Developer Dashboard.
  * Typically for a Chrome extension using launchWebAuthFlow, it looks like:
  * https://<your-extension-id>.chromiumapp.org/
 */
-const redirectUri = ""; 
+const redirectUri = "https://paakbbkbmndpmabhjmfikaedcmmgdbcp.chromiumapp.org/"; 
 
 
 const scopes = [
@@ -50,7 +50,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.action === 'generateMoodPlaylist') {
-    generateMoodPlaylist(message.playlistId, message.mood)
+    generateMoodPlaylist(message.playlistName ,message.playlistId, message.mood)
       .then(data => sendResponse(data))
       .catch(err => {
         console.error('Failed to generate mood playlist:', err);
@@ -95,7 +95,7 @@ async function authorizeSpotify() {
 /**
  * Main flow to read playlist tracks, get moods via an LLM, filter by chosen mood, and create a new playlist.
  */
-async function generateMoodPlaylist(playlistId, mood) {
+async function generateMoodPlaylist(playlistName,playlistId, mood) {
   // 1. Get basic playlist track info (title, artist, IDs)
   const playlistData = await getPlaylistTracks(playlistId);
   const trackItems = playlistData.items.filter(item => item.track && item.track.id);
@@ -121,10 +121,11 @@ async function generateMoodPlaylist(playlistId, mood) {
   const uris = filtered.map(f => `spotify:track:${f.track_id}`);
 
   // 4. Create a new playlist
-  const user = await getCurrentUserProfile();
+  const user = await getCurrentUserProfile(); 
+  console.log("user:",user);
   const newPlaylist = await createPlaylist(
     user.id, 
-    `${mood.charAt(0).toUpperCase() + mood.slice(1)} Mood Playlist`
+    ` ${mood.charAt(0).toUpperCase() + mood.slice(1)} Mood Playlist for ${playlistName} `
   );
 
   // 5. Add the filtered URIs
@@ -139,7 +140,6 @@ async function determineMoodWithGemini(tracks,mood) {
   let response;
   try {
      response = await analyzeMoods(tracks);
-    console.log("res:",response);
   } catch (error) {
     console.error("Error calling analyzeMoods:", error);
   }

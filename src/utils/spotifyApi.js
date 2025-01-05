@@ -1,5 +1,5 @@
 // src/utils/spotifyApi.js
-import { getTokens } from './storage.js';
+import { getTokens } from "./storage.js";
 
 async function getAccessToken() {
   const { access_token } = await getTokens();
@@ -9,10 +9,11 @@ async function getAccessToken() {
   return access_token;
 }
 
+
 export async function getUserPlaylists() {
   const token = await getAccessToken();
-  const res = await fetch('https://api.spotify.com/v1/me/playlists', {
-    headers: { 'Authorization': `Bearer ${token}` }
+  const res = await fetch("https://api.spotify.com/v1/me/playlists", {
+    headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) {
     const errorText = await res.text();
@@ -24,7 +25,7 @@ export async function getUserPlaylists() {
 export async function getPlaylistTracks(playlistId) {
   const token = await getAccessToken();
   const res = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-    headers: { 'Authorization': `Bearer ${token}` }
+    headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) {
     const errorText = await res.text();
@@ -33,15 +34,15 @@ export async function getPlaylistTracks(playlistId) {
   return res.json();
 }
 
-export async function createPlaylist(userId, name, description="Mood-based playlist") {
+export async function createPlaylist(userId, name, description = "Mood-based playlist") {
   const token = await getAccessToken();
   const res = await fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, description, public: false })
+    body: JSON.stringify({ name, description, public: false }),
   });
   if (!res.ok) {
     const errorText = await res.text();
@@ -53,12 +54,12 @@ export async function createPlaylist(userId, name, description="Mood-based playl
 export async function addTracksToPlaylist(playlistId, trackUris) {
   const token = await getAccessToken();
   const res = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}/tracks`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ uris: trackUris })
+    body: JSON.stringify({ uris: trackUris }),
   });
   if (!res.ok) {
     const errorText = await res.text();
@@ -68,9 +69,10 @@ export async function addTracksToPlaylist(playlistId, trackUris) {
 }
 
 export async function getCurrentUserProfile() {
+  console.log("getCurrentUserProfile");
   const token = await getAccessToken();
   const res = await fetch(`https://api.spotify.com/v1/me`, {
-    headers: { 'Authorization': `Bearer ${token}` }
+    headers: { Authorization: `Bearer ${token}` },
   });
   if (!res.ok) {
     const errorText = await res.text();
